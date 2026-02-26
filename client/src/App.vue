@@ -1,5 +1,10 @@
 <template>
   <div class="app-container">
+    <div v-if="!serverOnline" class="server-alert">
+      <span class="alert-icon">⚠️</span>
+      <span>Le serveur backend n'est pas accessible. Certaines fonctionnalités pourraient être limitées.</span>
+    </div>
+
     <header class="app-header">
       <h1>Green-Stock</h1>
       <p class="subtitle">Gestion d'inventaire informatique reconditionne</p>
@@ -53,8 +58,20 @@ const currentAsset = ref(null)
 const modalMode = ref('create')
 const analyzing = ref(false)
 const analysisResult = ref('')
+const serverOnline = ref(true)
 
-onMounted(() => { fetchAssets() })
+onMounted(async () => {
+  // Check server health
+  serverOnline.value = await api.checkHealth()
+  
+  // Fetch assets
+  fetchAssets()
+
+  // Check server health periodically (every 30 seconds)
+  setInterval(async () => {
+    serverOnline.value = await api.checkHealth()
+  }, 30000)
+})
 
 const openCreateModal = () => {
   currentAsset.value = null
@@ -107,6 +124,12 @@ const runAnalysis = async () => {
 
 <style scoped>
 .app-container { min-height: 100vh; display: flex; flex-direction: column; background: #f5f5f5; }
+.server-alert {
+  background: #fff3cd; color: #856404; padding: 1rem 2rem;
+  border-bottom: 2px solid #ffc107; display: flex; align-items: center;
+  gap: 1rem; font-weight: 500;
+}
+.alert-icon { font-size: 1.3rem; }
 .app-header {
   background: linear-gradient(135deg, #2d5016 0%, #3a6b1f 100%);
   color: white; padding: 2rem; text-align: center;

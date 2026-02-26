@@ -177,6 +177,11 @@ app.get('/assets/analysis', async (req, res, next) => {
     } catch (error) { next(error); }
 });
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok', message: 'Backend server is running' });
+});
+
 // Global error handler
 app.use((error, req, res, next) => {
     console.error('Error:', error);

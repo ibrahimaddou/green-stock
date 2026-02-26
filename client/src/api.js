@@ -1,6 +1,23 @@
 const API_BASE = '/api'
 
 export const api = {
+  async checkHealth() {
+    try {
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), 3000)
+      
+      const res = await fetch(`${API_BASE}/health`, {
+        method: 'GET',
+        signal: controller.signal
+      })
+      
+      clearTimeout(timeout)
+      return res.ok
+    } catch {
+      return false
+    }
+  },
+
   async getAssets() {
     const res = await fetch(`${API_BASE}/assets`)
     if (!res.ok) throw new Error('Failed to fetch assets')

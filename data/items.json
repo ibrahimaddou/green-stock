@@ -12,5 +12,12 @@
     "category": "Ecran",
     "weight": 5,
     "co2_saved": 100
+  },
+  {
+    "id": 1772103669902,
+    "name": "hp pavilion",
+    "category": "Laptop",
+    "weight": 2.8,
+    "co2_saved": 56
   }
 ]
