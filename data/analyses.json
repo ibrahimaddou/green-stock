@@ -1,5 +1,125 @@
 [
   {
+    "id": 1772105166508,
+    "createdAt": "2026-02-26T11:26:06.508Z",
+    "recommendations": [
+      {
+        "priority": "high",
+        "title": "Augmenter le nombre de PC reconditionnés",
+        "description": "Étant donné que les PC représentent la plus grande économie de CO₂ par appareil (200 kg pour le pc bureau dell), il est recommandé d'augmenter le nombre de PC reconditionnés dans l'inventaire pour maximiser l'impact environnemental. Cela pourrait inc",
+        "icon": "🖥️"
+      },
+      {
+        "priority": "medium",
+        "title": "Diversifier les appareils reconditionnés",
+        "description": "L'inventaire actuel montre une bonne variété d'appareils reconditionnés, allant des écrans aux smartphones. Cependant, pour atteindre un plus grand public et maximiser les économies de CO₂, il serait bénéfique de diversifier encore plus l'inventaire ",
+        "icon": "📈"
+      },
+      {
+        "priority": "low",
+        "title": "Réduire le poids total des appareils",
+        "description": "Bien que le poids total actuel de 18,2 kg soit relativement faible, il pourrait être intéressant d'explorer des options pour réduire encore ce poids, notamment en considérant des modèles d'appareils plus légers ou en optimisant l'emballage et le tran",
+        "icon": "⚖️"
+      }
+    ]
+  },
+  {
+    "id": 1772104932526,
+    "createdAt": "2026-02-26T11:22:12.526Z",
+    "recommendations": [
+      {
+        "priority": "high",
+        "title": "Prioriser les appareils high-impact",
+        "description": "Remise en service urgente : pc bureau dell, samsung, hp pavilion. Cela maximise le CO₂ économisé par action (364 kg au total).",
+        "icon": "⚡"
+      },
+      {
+        "priority": "medium",
+        "title": "Optimiser la catégorie \"PC\"",
+        "description": "Focus sur ~200 kg CO₂ économisés : améliorer le taux de réutilisation et optimiser le cycle de vie de 1 appareils.",
+        "icon": "♻️"
+      },
+      {
+        "priority": "low",
+        "title": "Programme local de collecte",
+        "description": "Mettre en place un programme de collecte et de réparation local pour réduire les transports et prolonger la durée de vie des équipements.",
+        "icon": "🌱"
+      }
+    ]
+  },
+  {
+    "id": 1772104885195,
+    "createdAt": "2026-02-26T11:21:25.195Z",
+    "recommendations": [
+      {
+        "priority": "high",
+        "title": "Étendre écran",
+        "description": "Développer l'offre d'écrans reconditionnés pour économiser davantage de CO₂. Les écrans comme le Samsung ont un impact significatif avec 100 kg CO₂ économisés.",
+        "icon": "📺"
+      },
+      {
+        "priority": "medium",
+        "title": "Laptops écologiques",
+        "description": "Promouvoir les laptops reconditionnés comme l'HP Pavilion qui économisent 56 kg de CO₂, réduisant ainsi l'empreinte carbone.",
+        "icon": "📊"
+      },
+      {
+        "priority": "low",
+        "title": "Smartphones responsables",
+        "description": "Proposer des smartphones reconditionnés comme l'iPhone 13 pour une empreinte carbone plus faible, même si l'impact est moindre avec 8 kg de CO₂ économisés.",
+        "icon": "📱"
+      }
+    ]
+  },
+  {
+    "id": 1772104504864,
+    "createdAt": "2026-02-26T11:15:04.864Z",
+    "recommendations": [
+      {
+        "priority": "high",
+        "title": "Prioriser les appareils high-impact",
+        "description": "Remise en service urgente : samsung, hp pavilion, iphone 13. Cela maximise le CO₂ économisé par action (164 kg au total).",
+        "icon": "⚡"
+      },
+      {
+        "priority": "medium",
+        "title": "Optimiser la catégorie \"Ecran\"",
+        "description": "Focus sur ~100 kg CO₂ économisés : améliorer le taux de réutilisation et optimiser le cycle de vie de 1 appareils.",
+        "icon": "♻️"
+      },
+      {
+        "priority": "low",
+        "title": "Programme local de collecte",
+        "description": "Mettre en place un programme de collecte et de réparation local pour réduire les transports et prolonger la durée de vie des équipements.",
+        "icon": "🌱"
+      }
+    ]
+  },
+  {
+    "id": 1772104372790,
+    "createdAt": "2026-02-26T11:12:52.790Z",
+    "recommendations": [
+      {
+        "priority": "high",
+        "title": "Prioriser les appareils high-impact",
+        "description": "Remise en service urgente : samsung, hp pavilion, iphone 13. Cela maximise le CO₂ économisé par action (164 kg au total).",
+        "icon": "⚡"
+      },
+      {
+        "priority": "medium",
+        "title": "Optimiser la catégorie \"Ecran\"",
+        "description": "Focus sur ~100 kg CO₂ économisés : améliorer le taux de réutilisation et optimiser le cycle de vie de 1 appareils.",
+        "icon": "♻️"
+      },
+      {
+        "priority": "low",
+        "title": "Programme local de collecte",
+        "description": "Mettre en place un programme de collecte et de réparation local pour réduire les transports et prolonger la durée de vie des équipements.",
+        "icon": "🌱"
+      }
+    ]
+  },
+  {
     "id": 1772103672931,
     "createdAt": "2026-02-26T11:01:12.931Z",
     "analysis": "Analyse automatique :\n1) Prioriser la remise en service des appareils à fort impact CO₂ (ex: samsung, hp pavilion, iphone 13). Cela maximise le CO₂ économisé par action.\n2) Concentrer les efforts sur la catégorie \"Ecran\" (~100 kg CO₂ économisés) : améliorer le taux de réutilisation et optimiser le cycle de vie.\n3) Mettre en place un programme de collecte et de réparation local pour réduire les transports et prolonger la durée de vie des équipements."

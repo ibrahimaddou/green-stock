@@ -19,5 +19,12 @@
     "category": "Laptop",
     "weight": 2.8,
     "co2_saved": 56
+  },
+  {
+    "id": 1772104927023,
+    "name": "pc bureau dell",
+    "category": "PC",
+    "weight": 10,
+    "co2_saved": 200
   }
 ]

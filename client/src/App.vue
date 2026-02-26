@@ -15,16 +15,20 @@
 
       <div class="toolbar">
         <button class="btn btn-add" @click="openCreateModal">+ Ajouter un actif</button>
-        <button class="btn btn-ia" @click="runAnalysis" :disabled="analyzing" style="margin-left:12px">🔬 Analyse IA</button>
+        <button class="btn btn-ia" @click="runAnalysis" :disabled="analyzing">🔬 Analyse IA</button>
       </div>
 
       <div v-if="loading" class="loading">Chargement...</div>
       <div v-if="error" class="error-banner">{{ error }}</div>
 
-      <div v-if="analysisResult" class="analysis-card">
-        <h3>Analyse IA</h3>
-        <pre class="analysis-text">{{ analysisResult }}</pre>
-      </div>
+      <AnalysisResult
+        :isLoading="analyzing"
+        :result="analysisResult"
+        :assetCount="assets.length"
+        :totalCo2="totalCo2"
+        :analysisHistory="analysisHistory"
+        @compare="compareAnalyses"
+      />
 
       <AssetTable :assets="assets" @edit="openEditModal" @delete="handleDelete" />
 
@@ -48,6 +52,7 @@ import { ref, onMounted } from 'vue'
 import SummaryCard from './components/SummaryCard.vue'
 import AssetTable from './components/AssetTable.vue'
 import AssetModal from './components/AssetModal.vue'
+import AnalysisResult from './components/AnalysisResult.vue'
 import { useAssets } from './composables/useAssets.js'
 import { api } from './api.js'
 
@@ -59,6 +64,7 @@ const modalMode = ref('create')
 const analyzing = ref(false)
 const analysisResult = ref('')
 const serverOnline = ref(true)
+const analysisHistory = ref([])
 
 onMounted(async () => {
   // Check server health
@@ -113,12 +119,33 @@ const runAnalysis = async () => {
   try {
     // send current inventory to backend for analysis
     const res = await api.analyzeAssets(assets.value)
-    analysisResult.value = res.analysis || JSON.stringify(res, null, 2)
+    // Nouveau format JSON structuré avec recommendations
+    const result = res.recommendations
+      ? JSON.stringify(res)
+      : res.analysis || JSON.stringify(res, null, 2)
+    analysisResult.value = result
+    
+    // Ajouter à l'historique
+    analysisHistory.value.push({
+      date: new Date().toISOString(),
+      result: result,
+      assetCount: assets.value.length,
+      co2: totalCo2.value
+    })
+    
+    // Garder seulement les 10 dernières analyses
+    if (analysisHistory.value.length > 10) {
+      analysisHistory.value = analysisHistory.value.slice(-10)
+    }
   } catch (err) {
     analysisResult.value = 'Erreur lors de l\'analyse : ' + (err.message || err)
   } finally {
     analyzing.value = false
   }
+}
+
+const compareAnalyses = () => {
+  console.log('Comparaison avec historique', analysisHistory.value)
 }
 </script>
 
@@ -137,13 +164,21 @@ const runAnalysis = async () => {
 .app-header h1 { margin: 0; font-size: 2.5rem; }
 .subtitle { margin: 0.5rem 0 0; opacity: 0.9; font-size: 1rem; }
 .app-main { flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; padding: 2rem; }
-.toolbar { margin-bottom: 2rem; }
+.toolbar { margin-bottom: 2rem; display: flex; align-items: center; flex-wrap: wrap; gap: 0; }
 .btn-add {
   background: #52cc52; color: white; padding: 0.75rem 1.5rem;
   border: none; border-radius: 6px; font-size: 1rem;
   font-weight: 600; cursor: pointer; transition: all 0.3s;
 }
 .btn-add:hover { background: #3aa83a; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(82,204,82,0.3); }
+.btn-ia {
+  background: #2d5016; color: white; padding: 0.75rem 1.5rem;
+  border: none; border-radius: 6px; font-size: 1rem;
+  font-weight: 600; cursor: pointer; transition: all 0.3s;
+  margin-left: 12px;
+}
+.btn-ia:hover { background: #3a6b1f; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(45,80,22,0.3); }
+.btn-ia:disabled { background: #aaa; cursor: not-allowed; opacity: 0.6; transform: none; box-shadow: none; }
 .loading { text-align: center; padding: 2rem; font-size: 1.1rem; color: #666; }
 .error-banner {
   background: #ffe0e0; color: #d32f2f; padding: 1rem;
