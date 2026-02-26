@@ -38,4 +38,17 @@ export const api = {
     if (!res.ok) throw new Error('Failed to delete asset')
     return res.json()
   }
+,
+  async analyzeAssets(items) {
+    const res = await fetch(`${API_BASE}/assets/analyze`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items })
+    })
+    if (!res.ok) {
+      const text = await res.text()
+      throw new Error('Analysis failed: ' + text)
+    }
+    return res.json()
+  }
 }

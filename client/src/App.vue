@@ -10,10 +10,16 @@
 
       <div class="toolbar">
         <button class="btn btn-add" @click="openCreateModal">+ Ajouter un actif</button>
+        <button class="btn btn-ia" @click="runAnalysis" :disabled="analyzing" style="margin-left:12px">🔬 Analyse IA</button>
       </div>
 
       <div v-if="loading" class="loading">Chargement...</div>
       <div v-if="error" class="error-banner">{{ error }}</div>
+
+      <div v-if="analysisResult" class="analysis-card">
+        <h3>Analyse IA</h3>
+        <pre class="analysis-text">{{ analysisResult }}</pre>
+      </div>
 
       <AssetTable :assets="assets" @edit="openEditModal" @delete="handleDelete" />
 
@@ -38,12 +44,15 @@ import SummaryCard from './components/SummaryCard.vue'
 import AssetTable from './components/AssetTable.vue'
 import AssetModal from './components/AssetModal.vue'
 import { useAssets } from './composables/useAssets.js'
+import { api } from './api.js'
 
 const { assets, loading, error, totalCo2, fetchAssets, addAsset, updateAsset, deleteAsset } = useAssets()
 
 const showModal = ref(false)
 const currentAsset = ref(null)
 const modalMode = ref('create')
+const analyzing = ref(false)
+const analysisResult = ref('')
 
 onMounted(() => { fetchAssets() })
 
@@ -79,6 +88,20 @@ const handleSave = async (formData) => {
 
 const handleDelete = async (id) => {
   try { await deleteAsset(id) } catch (err) { console.error(err) }
+}
+
+const runAnalysis = async () => {
+  analysisResult.value = ''
+  analyzing.value = true
+  try {
+    // send current inventory to backend for analysis
+    const res = await api.analyzeAssets(assets.value)
+    analysisResult.value = res.analysis || JSON.stringify(res, null, 2)
+  } catch (err) {
+    analysisResult.value = 'Erreur lors de l\'analyse : ' + (err.message || err)
+  } finally {
+    analyzing.value = false
+  }
 }
 </script>
 

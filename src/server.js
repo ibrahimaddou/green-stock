@@ -117,6 +117,69 @@ app.delete('/assets/:id', async (req, res, next) => {
     } catch (error) { next(error); }
 });
 
+// Analyze inventory with AI (Gemini) or local heuristic
+app.post('/assets/analyze', async (req, res, next) => {
+    try {
+        // Accept items in body or load from storage
+        const items = Array.isArray(req.body.items) && req.body.items.length > 0
+            ? req.body.items
+            : await readData(assetsFilePath);
+
+        // If remote LLM is configured, forward the request
+        const apiUrl = process.env.GEMINI_API_URL;
+        const apiKey = process.env.GEMINI_API_KEY;
+
+        if (apiUrl && apiKey && typeof fetch === 'function') {
+            const resp = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({ items })
+            });
+            if (!resp.ok) {
+                const text = await resp.text();
+                return res.status(502).json({ message: 'LLM call failed', details: text });
+            }
+            const data = await resp.json();
+            // Expect the LLM response to contain a textual summary in `analysis` or `result`
+            return res.json({ analysis: data.analysis || data.result || data });
+        }
+
+        // Fallback: simple heuristic analysis in French
+        const byCategory = {};
+        items.forEach(it => {
+            const cat = (it.category || 'Autre').toString();
+            byCategory[cat] = byCategory[cat] || { count: 0, weight: 0, co2: 0 };
+            byCategory[cat].count += 1;
+            byCategory[cat].weight += Number(it.weight || 0);
+            byCategory[cat].co2 += Number(it.co2_saved || (it.weight || 0) * 20);
+        });
+
+        // Top 3 categories by CO2 potential
+        const categories = Object.entries(byCategory).map(([k, v]) => ({ category: k, ...v }));
+        categories.sort((a,b) => b.co2 - a.co2);
+
+        const topDevices = items.slice().sort((a,b) => (b.co2_saved || 0) - (a.co2_saved || 0)).slice(0,3);
+
+        const suggestions = [];
+        // Suggestion 1: target heavy/most CO2-saving devices for reuse
+        if (topDevices.length) {
+            suggestions.push(`Prioriser la remise en service/reconditionnement des appareils ayant le plus gros impact CO₂ (ex: ${topDevices.map(d=>d.name).join(', ')}). Cela maximise le CO₂ économisé par action.`);
+        }
+        // Suggestion 2: category-level measures
+        if (categories.length) {
+            suggestions.push(`Concentrer les efforts sur la catégorie "${categories[0].category}" (total ~${categories[0].co2.toFixed(0)} kg CO₂ économisés) : améliorer le taux de réutilisation et optimiser le cycle de vie pour cette catégorie.`);
+        }
+        // Suggestion 3: process and policy
+        suggestions.push(`Mettre en place un programme de collecte et de réparation local pour réduire les transports et prolonger la durée de vie moyenne des équipements ; envisager des remplacements ciblés vers des modèles à plus faible consommation.`);
+
+        const analysisText = `Analyse automatique :\n1) ${suggestions[0]}\n2) ${suggestions[1]}\n3) ${suggestions[2]}`;
+        return res.json({ analysis: analysisText });
+    } catch (error) { next(error); }
+});
+
 // Global error handler
 app.use((error, req, res, next) => {
     console.error('Error:', error);
