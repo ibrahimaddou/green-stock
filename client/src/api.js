@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000'
+const API_BASE = '/api'
 
 export const api = {
   async getAssets() {
@@ -49,6 +49,12 @@ export const api = {
       const text = await res.text()
       throw new Error('Analysis failed: ' + text)
     }
+    return res.json()
+  },
+
+  async getAnalysisHistory() {
+    const res = await fetch(`${API_BASE}/assets/analysis`)
+    if (!res.ok) throw new Error('Failed to fetch analysis history')
     return res.json()
   }
 }
