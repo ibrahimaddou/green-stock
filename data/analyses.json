@@ -1,5 +1,149 @@
 [
   {
+    "id": 1774279217395,
+    "createdAt": "2026-03-23T15:20:17.395Z",
+    "recommendations": [
+      {
+        "priority": "high",
+        "title": "Augmenter l'offre de PC reconditionnés",
+        "description": "L'analyse de l'inventaire montre que les PC reconditionnés ont le plus grand impact sur la réduction des émissions de CO₂, avec 200 kg économisés pour un seul appareil. Il est donc recommandé d'augmenter l'offre de PC reconditionnés pour maximiser l'",
+        "icon": "🖥️"
+      },
+      {
+        "priority": "medium",
+        "title": "Diversifier l'offre d'écrans reconditionnés",
+        "description": "Les écrans reconditionnés, comme le Samsung, ont un impact significatif sur la réduction des émissions de CO₂, avec 100 kg économisés. Il serait intéressant de diversifier l'offre d'écrans reconditionnés pour répondre à une variété de besoins et de p",
+        "icon": "📺"
+      },
+      {
+        "priority": "low",
+        "title": "Réévaluer l'offre de smartphones reconditionnés",
+        "description": "Les smartphones reconditionnés ont un impact relativement faible sur la réduction des émissions de CO₂, avec seulement 8 kg économisés. Il pourrait être utile de réévaluer l'offre de smartphones reconditionnés et de considérer si d'autres catégories ",
+        "icon": "📱"
+      }
+    ]
+  },
+  {
+    "id": 1774279192718,
+    "createdAt": "2026-03-23T15:19:52.718Z",
+    "recommendations": [
+      {
+        "priority": "high",
+        "title": "Augmenter le stock de PC",
+        "description": "Étant donné que le PC bureau Dell représente le plus grand impact CO₂ économisé avec 200 kg, il est recommandé d'augmenter le stock de ce type d'appareil pour maximiser les économies d'émissions de CO₂, comme le montre l'inventaire actuel où le PC re",
+        "icon": "🖥️"
+      },
+      {
+        "priority": "medium",
+        "title": "Diversifier les écrans",
+        "description": "Avec un seul écran Samsung représentant 100 kg de CO₂ économisés, il est suggéré de diversifier les offres d'écrans pour répondre à une variété de besoins et ainsi potentiellement augmenter les économies de CO₂, comme indiqué dans l'inventaire où l'é",
+        "icon": "📺"
+      },
+      {
+        "priority": "low",
+        "title": "Maintenir le stock de smartphones",
+        "description": "Étant donné que le smartphone représente le moins d'impact avec seulement 8 kg de CO₂ économisés, il est recommandé de maintenir le stock actuel sans augmentation significative, car son impact environnemental est déjà minimal, comme montré dans l'inv",
+        "icon": "📱"
+      }
+    ]
+  },
+  {
+    "id": 1774279100357,
+    "createdAt": "2026-03-23T15:18:20.357Z",
+    "recommendations": [
+      {
+        "priority": "high",
+        "title": "Développer l'offre de PC reconditionnés",
+        "description": "Étant donné que le PC bureau Dell a permis d'économiser 200 kg de CO₂, soit plus de la moitié du total de 364 kg de CO₂ économisés, il est recommandé de développer l'offre de PC reconditionnés pour accroître l'impact environnemental. Cela pourrait in",
+        "icon": "🖥️"
+      },
+      {
+        "priority": "medium",
+        "title": "Diversifier les appareils reconditionnés",
+        "description": "Actuellement, l'inventaire compte 4 catégories d'appareils reconditionnés. Pour augmenter l'impact total, il serait bénéfique de diversifier les appareils proposés, en incluant par exemple des tablettes, des serveurs ou des périphériques de réseau re",
+        "icon": "📈"
+      },
+      {
+        "priority": "low",
+        "title": "Optimiser les processus de logistique",
+        "description": "Avec un poids total de 18,2 kg pour les 4 appareils, il est possible d'optimiser les processus de logistique pour réduire les coûts et l'impact environnemental liés au transport. Cela pourrait inclure la recherche de moyens de transport plus écologiq",
+        "icon": "🚚"
+      }
+    ]
+  },
+  {
+    "id": 1772105857906,
+    "createdAt": "2026-02-26T11:37:37.906Z",
+    "recommendations": [
+      {
+        "priority": "high",
+        "title": "Augmenter le nombre de PC reconditionnés",
+        "description": "L'inventaire actuel montre que les PC sont les appareils les plus impactants en termes d'économie de CO₂, avec 200 kg économisés pour un seul appareil. Il est donc recommandé d'augmenter le nombre de PC reconditionnés dans l'inventaire pour maximiser",
+        "icon": "🖥️"
+      },
+      {
+        "priority": "medium",
+        "title": "Diversifier les écrans reconditionnés",
+        "description": "L'inventaire actuel ne contient qu'un seul écran reconditionné, qui a économisé 100 kg de CO₂. Il serait intéressant de diversifier les écrans reconditionnés pour offrir une plus grande variété aux clients et potentiellement augmenter l'impact enviro",
+        "icon": "📺"
+      },
+      {
+        "priority": "low",
+        "title": "Réduire le poids total des équipements",
+        "description": "Le poids total de l'inventaire est actuellement de 18,2 kg, ce qui est relativement faible. Cependant, il serait intéressant de réduire encore ce poids en privilégiant les appareils les plus légers, comme les smartphones qui ne pèsent que quelques gr",
+        "icon": "⚖️"
+      }
+    ]
+  },
+  {
+    "id": 1772105848022,
+    "createdAt": "2026-02-26T11:37:28.022Z",
+    "recommendations": [
+      {
+        "priority": "high",
+        "title": "Augmenter le stock de PC",
+        "description": "Compte tenu que le PC a le plus grand impact sur la réduction de CO₂ (200 kg économisés), il serait bénéfique d'augmenter le stock de ce type d'équipement pour maximiser les économies d'émissions de gaz à effet de serre. En effet, le PC Dell a déjà m",
+        "icon": "🖥️"
+      },
+      {
+        "priority": "medium",
+        "title": "Développer l'offre d'écrans",
+        "description": "Les écrans, tels que le Samsung, ont également un impact notable sur la réduction de CO₂ (100 kg économisés). Il serait intéressant de diversifier et d'augmenter l'offre dans cette catégorie pour atteindre un public plus large et ainsi accroître les ",
+        "icon": "📺"
+      },
+      {
+        "priority": "low",
+        "title": "Maintenir l'offre de smartphones",
+        "description": "Bien que les smartphones, comme celui mentionné dans l'inventaire, aient un impact plus faible sur la réduction de CO₂ (8 kg économisés), il est important de maintenir une offre dans cette catégorie pour répondre à la demande des clients et contribue",
+        "icon": "📱"
+      }
+    ]
+  },
+  {
+    "id": 1772105819360,
+    "createdAt": "2026-02-26T11:36:59.360Z",
+    "recommendations": [
+      {
+        "priority": "high",
+        "title": "Extension de la gamme de PC",
+        "description": "Étant donné que le PC bureau Dell a permis d'économiser 200 kg de CO₂, il est recommandé d'agrandir l'inventaire de PC reconditionnés pour accroître l'impact environnemental. Cela pourrait inclure l'ajout de nouveaux modèles de PC, tels que des ordin",
+        "icon": "🖥️"
+      },
+      {
+        "priority": "medium",
+        "title": "Diversification des écrans",
+        "description": "Avec l'écran Samsung ayant économisé 100 kg de CO₂, il serait judicieux de diversifier l'inventaire d'écrans reconditionnés. Cela pourrait comprendre l'ajout d'écrans de différentes tailles et résolutions pour répondre à une variété de besoins et ain",
+        "icon": "📺"
+      },
+      {
+        "priority": "low",
+        "title": "Optimisation des smartphones",
+        "description": "Bien que le smartphone ait économisé 8 kg de CO₂, il est important de noter que cet appareil a le moins d'impact environnemental parmi les équipements de l'inventaire. Il pourrait être utile de réévaluer la stratégie d'inventaire pour les smartphones",
+        "icon": "📱"
+      }
+    ]
+  },
+  {
     "id": 1772105166508,
     "createdAt": "2026-02-26T11:26:06.508Z",
     "recommendations": [
